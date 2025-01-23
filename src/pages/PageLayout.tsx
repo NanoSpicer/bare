@@ -2,6 +2,7 @@ import { Html } from "@elysiajs/html";
 import Layout from "./Layout";
 import type { PageContext } from "./page-context";
 import { logger } from "@logging";
+import { configuration } from "@configuration";
 
 
 interface PageLayoutProps {
@@ -27,7 +28,7 @@ export function PageTitle(props: { children: any }) {
 export default function PageLayout(props: PageLayoutProps) {
 
   return (
-    <Layout context={props.context}>
+    <Layout context={props.context} baseHref={configuration.APP_ROOT}>
       { props.pageTitle }
       { props.children }
     </Layout>

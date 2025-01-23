@@ -1,8 +1,8 @@
-import { integer } from 'drizzle-orm/sqlite-core';
 import Elysia, { error, t } from "elysia"
 import { deleteFileById, getFileById, getFiles, saveFile } from "../data/uploads"
+import { url } from '@routes';
 
-const uploadById = (id: string) => `/api/uploads/${id}`
+const uploadById = (id: string) => url(`/api/uploads/${id}`)
 
 export const uploads = new Elysia({ prefix: '/uploads' })
   .get('/', () => getFiles())

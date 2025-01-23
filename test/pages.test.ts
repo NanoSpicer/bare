@@ -1,5 +1,6 @@
 import { afterAll, beforeAll, expect, test } from 'bun:test'
 import { useTestServer } from './test-server'
+import { url } from '@routes'
 
 const testServer = useTestServer(8080)
 beforeAll(testServer.start)
@@ -8,7 +9,7 @@ afterAll(testServer.stop)
 test("cannot access pages without basic auth", async () => {
   
   const getHomePage = (headers?: any) => (
-    testServer.fetch('/', {
+    testServer.fetch(url('/'), {
       method: 'GET',
       headers
     })

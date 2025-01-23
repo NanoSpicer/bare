@@ -2,12 +2,16 @@ import { Html } from "@elysiajs/html";
 import PageLayout, { PageTitle } from "../PageLayout";
 import type { PageContext } from "../page-context";
 import Button from "@components/Button";
+import { url } from "@routes";
 
 
 interface NewTokenPageProps {
 
   context: PageContext
 }
+
+const newTokenEndpoint = url('/api/tokens')
+const afterSuccessfulCreation = url('/tokens')
 
 const onsubmit = `
 async function createNewToken(event) {
@@ -17,7 +21,7 @@ async function createNewToken(event) {
   const jsonData = {
     name: formData.get('name')
   };
-  const response = await fetch('/api/tokens', {
+  const response = await fetch('${newTokenEndpoint}', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +30,7 @@ async function createNewToken(event) {
   })
 
   if (response.ok) {
-    window.location.replace("/tokens");
+    window.location.replace("${afterSuccessfulCreation}");
   } else {
     alert('Ha ocurrido un error')
   }

@@ -4,15 +4,25 @@ import { basicAuth } from "./api/middleware/authentication";
 import { api } from "./api";
 import { logger } from "@logging";
 import { requestLogging } from "./request-logging";
-import process from 'process'
+import { configuration } from "@configuration";
 
 const {
   AUTH_USERNAME = 'admin',
   AUTH_PASSWORD = 'admin'
-} = process.env
+} = configuration
 
 
-export const server = new Elysia()
+// if it ends with a slash remove the last character as a prefix
+function ammend(path: string): string {
+  return path.endsWith('/') ? path.slice(0, -1) : path
+}
+
+const options = 
+  configuration.APP_ROOT
+    ? { prefix: ammend(configuration.APP_ROOT) }
+    : undefined
+
+export const server = new Elysia(options)
   .use(requestLogging)
   .use(api)
   .use(app => app

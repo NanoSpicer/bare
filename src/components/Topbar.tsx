@@ -3,7 +3,7 @@ import { Logo } from "@components/Logo";
 import ProfileIcon from "@components/ProfileIcon";
 
 
-export default function Topbar(props: any) {
+export default function Topbar({root}: {root: string}) {
 
   return (
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -16,7 +16,7 @@ export default function Topbar(props: any) {
                 <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
               </svg>
             </button>
-            <a href="/" class="flex ms-2 md:me-24">
+            <a href={root} class="flex ms-2 md:me-24">
               <Logo />
               <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">BaRe - Backup repository</span>
             </a>

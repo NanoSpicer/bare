@@ -14,7 +14,9 @@
       "@components": ["./src/components"],
       "@components/*": ["./src/components/*"],
       "@icons": ["./src/components/icons"],
-      "@icons/*": ["./src/components/icons/*"]
+      "@icons/*": ["./src/components/icons/*"],
+      "@routes": ["./src/routes.ts"],
+      "@configuration": ["./src/configuration.ts"],
     },
 
     // Bundler mode

@@ -3,6 +3,7 @@ import { useTestServer } from './test-server'
 import { db } from '../src/db'
 import { apiTokens } from '../src/database/schema'
 import { eq } from 'drizzle-orm'
+import { url } from '@routes'
 
 const server = useTestServer(8080)
 
@@ -45,7 +46,7 @@ test("Can upload a simple file", async () => {
   formData.append("file", file)
   formData.append("meta", JSON.stringify(meta))
 
-  const upload = (token: string | undefined = undefined) => server.fetch('/api/uploads', {
+  const upload = (token: string | undefined = undefined) => server.fetch(url('/api/uploads'), {
     method: 'POST',
     body: formData,
     headers: {
@@ -61,7 +62,7 @@ test("Can upload a simple file", async () => {
   expect(response.status).toBe(201)
   const location = response.headers.get('Location')
   expect(location).toBeTruthy()
-  expect(location).toStartWith('/api/uploads/')
+  expect(location).toStartWith(url('/api/uploads/'))
 
   const download = (token: string | undefined = undefined) => server.fetch(location!+`?api_token=${token}`, {
     method: 'GET'
@@ -74,7 +75,7 @@ test("Can upload a simple file", async () => {
   expect(fileResponse.status).toBe(200)
   expect(fileResponse.headers.get('Content-Type')).toBe(bunFile.type)
 
-  const hasInsertedFile = await server.fetch('/api/uploads', {
+  const hasInsertedFile = await server.fetch(url('/api/uploads'), {
     method: 'GET',
     headers: {
       'X-Api-Token': testToken.token

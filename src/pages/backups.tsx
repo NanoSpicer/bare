@@ -6,6 +6,7 @@ import Trash from "@icons/Trash";
 import { getFiles } from "../data/uploads";
 import PageLayout, { PageTitle } from "./PageLayout";
 import type { PageContext } from "./page-context";
+import { url } from "@routes";
 
 
 function format(date: Date): string {
@@ -55,11 +56,11 @@ export default function BackupsPage({
                 <a
                   class="flex flex-row items-center mr-2 border border-blue-400 text-blue-400 rounded-full text-sm p-1.5 hover:text-white hover:bg-blue-500"
                   download={file.name}
-                  href={`/api/uploads/${file.id}?api_token=${token.token}`}>
+                  href={url(`/api/uploads/${file.id}?api_token=${token.token}`)}>
                   <Download />
                 </a>
                 <button
-                  hx-delete={`/api/uploads/${file.id}?api_token=${token.token}`}
+                  hx-delete={url(`/api/uploads/${file.id}?api_token=${token.token}`)}
                   class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-1.5 text-center inline-flex items-center me-2 dark:bg-red-600 dark:hover:bg-blue-700 dark:focus:ring-red-800"
                   type="button">
                   <Trash />

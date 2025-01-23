@@ -10,6 +10,7 @@ await applyMigrations()
 await initializeDB()
 
 server.listen(port, app => {
-  const origin = `http://localhost:${app.port}/`
+  const root = process.env.APP_ROOT || '/'
+  const origin = `http://localhost:${app.port}${root}`
   logger.info(`Application ready at ${origin}`)
 })
