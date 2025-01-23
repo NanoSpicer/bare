@@ -8,7 +8,8 @@
     "push": "bunx --bun drizzle-kit push ",
     "seed": "NODE_ENV='dev' bun seeds/user-token.ts",
     "precompile": "rm -rf dist && bun bundle.ts",
-    "compile": "bun build --compile src/main.ts --outfile dist/bin/bare"
+    "compile": "bun build --compile src/main.ts --outfile dist/bin/bare",
+    "compile:linux": "bun build --compile --target=bun-linux-x64 src/main.ts --outfile dist/bin/bare"
   },
   "devDependencies": {
     "@types/bun": "latest",
