@@ -44,6 +44,7 @@ dist/
 
 
 You can pass `AUTH_USERNAME` and `AUTH_PASSWORD` to configure and utilize Basic Auth when accessing the pages
+You can pass `APP_ROOT` if you're serving behind a reverse proxy
 
 **⚠️ Disclaimer !**
 
@@ -58,6 +59,32 @@ OR
 You may write a `ecosystem.config.js` for PM2
 
 I guess that I will provide these in the repository but I just really wanted to publish this into github :)
+
+OR
+
+You might just comission your `systemd` service using the following template:
+
+```
+[Unit]
+Description=Backup repository for NanoSpicer
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+WorkingDirectory=/opt/bare
+Environment="AUTH_USERNAME=username"
+Environment="AUTH_PASSWORD=password"
+Environment="APP_ROOT=/bare/" # if serving behind a proxy
+ExecStart=/opt/bare/bin/bare
+ 
+[Install]
+WantedBy=multi-user.target
+ 
+```
 
 
 # License
