@@ -22,7 +22,12 @@ const options =
     ? { prefix: ammend(configuration.APP_ROOT) }
     : undefined
 
-export const server = new Elysia(options)
+export const server = new Elysia({
+  ...options,
+  serve: {
+    maxRequestBodySize: 200 * 1024 * 1024
+  }
+})
   .use(requestLogging)
   .use(api)
   .use(app => app
