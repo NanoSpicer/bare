@@ -15,7 +15,7 @@ interface LayoutProps {
 export default function Layout({
   title = 'Backup repository',
   context,
-  baseHref='/bare/',
+  baseHref='',
   children
 }: LayoutProps) {
   const rootRoute = baseHref ?? ''
