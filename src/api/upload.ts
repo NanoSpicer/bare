@@ -40,7 +40,9 @@ export const uploads = new Elysia({ prefix: '/uploads' })
     })
   }, {
     body: t.Object({
-      file: t.File(),
+      file: t.File({
+        maxSize: '100m'
+      }),
       meta: t.ObjectString({
         tags: t.Array(t.String())
       })
