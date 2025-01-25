@@ -69,6 +69,26 @@ dist/
 > Database migration and deployment is unstable:
 > Drizzle migrate does not work so you'll have to ship a pre-made SQLite DB.
 
+> [!INFO]  
+> In case of running behind a reverse proxy remember to update the max_body_size directive.
+
+```nginx.conf
+# example for NGINX
+location /bare/ {
+  ...
+  # Important if you have increased your max body size through env
+  client_max_body_size 100M;
+  # These are pass the real request IP to Bare.
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  # More proxy settings
+  proxy_set_header Host $http_host;
+  proxy_pass http://localhost:8080;
+  proxy_redirect off;
+  proxy_http_version 1.1;
+}
+```
+
 You can just run the setup steps under the `Development > Setting up` section
 
 ## Docker and docker-compose
