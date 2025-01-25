@@ -31,7 +31,6 @@ To install dependencies:
 ```bash
 bun install # install dependencies
 bun push # will create the sqlite.db for you with the current schema
-bun seed # adds an admin token
 ```
 
 ## Running
