@@ -1,5 +1,6 @@
 {
   "name": "bare",
+  "version": "0.0.1",
   "description": "Backup Repository. A simple service that stores blobs into SQLite and lists them in a simple GUI,",
   "module": "src/server.ts",
   "type": "module",
