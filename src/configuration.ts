@@ -19,6 +19,7 @@ function getMaxRequestBodySize(): number {
 }
 
 export const configuration = {
+  PORT: process.env.PORT ?? 8080,
   AUTH_USERNAME: process.env.AUTH_USERNAME,
   AUTH_PASSWORD: process.env.AUTH_PASSWORD,
   APP_ROOT: process.env.APP_ROOT,
