@@ -95,12 +95,13 @@ You can just run the setup steps under the `Development > Setting up` section
 
 You may use write your own `Dockerfile` while mapping volumes for `sqlite.db` in case you need to back it up
 
-OR
+Work in progress...
+
 
 ## PM2 ecosystem.config.js file
 You may write a `ecosystem.config.js` for PM2
+Work in progress...
 
-I guess that I will provide these in the repository but I just really wanted to publish this into github :)
 
 ## SystemD
 You might just comission your `systemd` service using the following template:
@@ -108,7 +109,7 @@ You might just comission your `systemd` service using the following template:
 ```bash
 # /etc/systemd/system/bare.service
 [Unit]
-Description=Backup repository for NanoSpicer
+Description=Backup repository
 After=network.target
 StartLimitIntervalSec=0
 
@@ -116,7 +117,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=root
+User=bare
 WorkingDirectory=/opt/bare
 Environment="AUTH_USERNAME=username"
 Environment="AUTH_PASSWORD=password"
