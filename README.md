@@ -69,7 +69,7 @@ dist/
 > Database migration and deployment is unstable:
 > Drizzle migrate does not work so you'll have to ship a pre-made SQLite DB.
 
-> [!INFO]  
+> [!NOTE]  
 > In case of running behind a reverse proxy remember to update the max_body_size directive.
 
 ```nginx.conf
