@@ -17,7 +17,7 @@ function ammend(path: string): string {
   return path.endsWith('/') ? path.slice(0, -1) : path
 }
 
-const options = 
+const options =
   configuration.APP_ROOT
     ? { prefix: ammend(configuration.APP_ROOT) }
     : undefined
@@ -25,7 +25,7 @@ const options =
 export const server = new Elysia({
   ...options,
   serve: {
-    maxRequestBodySize: 200 * 1024 * 1024
+    maxRequestBodySize: configuration.MAX_REQUEST_BODY_SIZE_MB
   }
 })
   .use(requestLogging)
